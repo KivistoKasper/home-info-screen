@@ -1,0 +1,31 @@
+---
+- name: Deploy Info Screen to Raspberry Pi
+  hosts: webservers
+  become: false
+
+  tasks:
+    - name: Copy Docker image archive
+      ansible.builtin.copy:
+        src: ./info-screen.tar
+        dest: /home/kasper/info-screen/info-screen.tar
+        owner: kasper
+        group: kasper
+        mode: "0644"
+
+    - name: Copy Docker Compose file
+      ansible.builtin.copy:
+        src: ./docker-compose.yml
+        dest: /home/kasper/info-screen/docker-compose.yml
+        owner: kasper
+        group: kasper
+        mode: "0644"
+   
+    - name: Load Docker image
+      ansible.builtin.command:
+        cmd: docker load -i /home/kasper/info-screen/info-screen.tar
+
+    - name: Build and start application
+      community.docker.docker_compose_v2:
+        project_src: /home/kasper/info-screen/
+        state: present
+        build: never

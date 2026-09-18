@@ -1,1 +1,3 @@
 *.tar
+*.ini
+start-dev.sh
