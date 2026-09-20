@@ -16,13 +16,13 @@ services:
     build: 
       context: ./frontend
       dockerfile: Dockerfile
+      args:
+        VITE_BACKEND_URL: /api
     container_name: frontend
     ports:
       - "80:80" 
     networks:
       - app_network
-    environment:
-      - VITE_BACKEND_URL=/
 
 networks:
   app_network:

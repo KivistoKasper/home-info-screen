@@ -1,4 +1,4 @@
-import './App.css'
+import './css/App.css'
 
 import WeatherView from './views/weather';
 import TimeDateView from './views/timeDate';

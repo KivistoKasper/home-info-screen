@@ -1,0 +1,6 @@
+#timeSet {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  gap: 10px; /* Optional spacing between items */
+  margin: 0; /* Remove default paragraph margins */
+}
