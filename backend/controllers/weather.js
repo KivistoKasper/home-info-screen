@@ -35,7 +35,7 @@ const createTimeTable = () => {
 const fetch = NodeFetchCache.create({
   // Only cache responses with a 2xx status code
   shouldCacheResponse: (response) => response.ok,
-  cache: new MemoryCache({ttl: 1000 * 60 * 15}), // 15 minutes
+  cache: new MemoryCache({ttl: 1000 * 60 * 14}), // 14 minutes
 });
 
 

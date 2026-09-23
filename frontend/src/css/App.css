@@ -2,6 +2,52 @@
   width: 100%;
   min-height: 100svh;
 
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  padding-bottom: 20px;
+
   background: #111827;
   color: #000000;
 }
+
+.dashboard-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+
+  gap: 20px;
+
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.weather-container,
+.nysse-container {
+  min-width: 0;
+}
+/* WeatherNow */
+.weather-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-items: stretch;
+}
+
+.nysse-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-items: stretch;
+}
+
+/* WeatherSlide */
+.weather-slide-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-items: stretch;
+}
+
