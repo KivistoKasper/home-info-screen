@@ -35,14 +35,16 @@ const createTimeTable = () => {
 const fetch = NodeFetchCache.create({
   // Only cache responses with a 2xx status code
   shouldCacheResponse: (response) => response.ok,
-  cache: new MemoryCache({ttl: 1000}),
+  cache: new MemoryCache({ttl: 1000 * 60 * 15}), // 15 minutes
 });
 
 
 
 weatherRouter.get('/', async (req, res) => {
+  // old url for only hourly data
   //const url = 'https://api.open-meteo.com/v1/forecast?latitude=61.4479&longitude=23.853&daily=sunrise%2Csunset&hourly=temperature_2m%2Cweather_code%2Cprecipitation%2Cwind_speed_10m%2Crelative_humidity_2m%2Capparent_temperature%2Cprecipitation_probability%2Cwind_gusts_10m&timezone=auto&forecast_days=3&wind_speed_unit=ms';
 
+  // new url for hourly, daily and current data
   const url = 'https://api.open-meteo.com/v1/forecast?latitude=61.4479&longitude=23.853&daily=sunrise,sunset&hourly=temperature_2m,weather_code,precipitation,wind_speed_10m,relative_humidity_2m,apparent_temperature,precipitation_probability,wind_gusts_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,wind_gusts_10m,precipitation,weather_code&timezone=auto&forecast_days=3&wind_speed_unit=ms'
   const options = {
     method: 'GET',
@@ -66,8 +68,8 @@ weatherRouter.get('/', async (req, res) => {
   try {
     const response = await fetch(url, options)
 
-    if (response.isCacheMiss) {
-      console.log('---No response was found in the cache!');
+    if (response.returnedFromCache) {
+      logger.info('---Response was found in the cache!');
     }
     const data = await response.json();
     //console.log(data.hourly.temperature_2m[0])
@@ -107,13 +109,13 @@ weatherRouter.get('/', async (req, res) => {
     weatherData.data.now = {
       temp: data.current.temperature_2m,
       wind: data.current.wind_speed_10m,
+      gusts: data.current.wind_gusts_10m,
       humidity: data.current.relative_humidity_2m,
       apparent_temp: data.current.apparent_temperature,
       precipitation: data.current.precipitation,
-      weather_code: data.current.weather_code
     }
 
-    console.log(weatherData);
+    //console.log(weatherData);
     res.json(weatherData);
   }
   catch (error) {
@@ -122,8 +124,5 @@ weatherRouter.get('/', async (req, res) => {
   }
 })
 
-weatherRouter.get('/now', async (req, res) => {
-
-});
 
 module.exports = weatherRouter

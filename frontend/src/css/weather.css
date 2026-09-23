@@ -1,0 +1,28 @@
+.weather-root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* WeatherNow + WeatherInfo */
+.weather-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* WeatherSlide */
+.weather-slide-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .weather-top {
+    grid-template-columns: 1fr;
+  }
+}

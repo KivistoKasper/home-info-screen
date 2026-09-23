@@ -18,7 +18,7 @@ const WeatherSlide = ({ weather }) => {
 
           <div>💨 {hourData.wind} m/s</div>
           <div>💧 {hourData.humidity}%</div>
-          <div>🌧️ {hourData.precipitation_probability}%</div>
+          <div>🌧️ {hourData.precipitation_probability}% {hourData.precipitation}mm</div>
         </div>
       ))}
     </div>

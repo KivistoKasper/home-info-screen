@@ -25,27 +25,22 @@ const WeatherView = () => {
 
     refreshWeather(); // first fetch after loading
 
-    const interval = setInterval(refreshWeather, 1000 * 60 * 30); // refresh every 30 mins 
+    const interval = setInterval(refreshWeather, 1000 * 60 * 15); // refresh every 15 mins 
     return () => clearInterval(interval);
   }, []);
    
-
-  
   return (
-    <>
-      <h2>Weather</h2>
-      <div id="WeatherNow">
-        <WeatherNow weather={weather}/>
+    <div className="weather-root">
+      <div className="weather-top">
+        <WeatherNow weather={weather} />
       </div>
-      <div id="weatherDaily">
-        <p>Tännään aurinkoo jälleen vaan: {weather?.data?.daily?.daylight?.hours}h ja {weather?.data?.daily?.daylight?.minutes}mins</p>
-        <p>Sunrise: {weather?.data?.daily?.sunrise}</p>
-        <p>Sunset: {weather?.data?.daily?.sunset}</p>
+
+      <div className="weather-slide-container">
+        <WeatherSlide weather={weather} />
       </div>
-      <WeatherSlide weather={weather}/>
-      
-    </>
-  )
+    </div>
+  );
+
 }
 
 export default WeatherView;

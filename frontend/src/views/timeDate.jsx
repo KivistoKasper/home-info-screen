@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
+import '../css/timeDateView.css';
 
 const TimeDateView = () => {
   const [date, setDate] = useState(new Date());
@@ -6,21 +7,40 @@ const TimeDateView = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setDate(new Date());
-    }, 1000); // Update every 1000ms (1 second)
+    }, 1000);
 
-    // Cleanup function to clear interval on component unmount
     return () => clearInterval(timer);
   }, []);
 
+  const dayAndDate = new Intl.DateTimeFormat('fi-FI', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  }).format(date);
 
-  
+  const time = new Intl.DateTimeFormat('fi-FI', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).format(date);
+
   return (
-    <div>
-      <div>Ny on tälläne aika</div>
-      <p>{date.toLocaleDateString('fi-FI', {})}</p>
-      <p>{date.toLocaleTimeString('fi-FI', {hour12: false})}</p>
-    </div>
-  )
-}
+    <header className="time-date">
+      <div className="time-date-content">
+
+        <div className="time-date-day">
+          {dayAndDate}
+        </div>
+
+        <div className="time-date-clock">
+          {time}
+          <div>/{date.toLocaleDateString('fi-FI', {})}</div>
+        </div>
+
+      </div>
+    </header>
+  );
+};
 
 export default TimeDateView;

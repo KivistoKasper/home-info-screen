@@ -1,6 +1,7 @@
-#timeSet {
-  display: flex;
-  align-items: center; /* Vertically align items */
-  gap: 10px; /* Optional spacing between items */
-  margin: 0; /* Remove default paragraph margins */
+.App {
+  width: 100%;
+  min-height: 100svh;
+
+  background: #111827;
+  color: #000000;
 }
