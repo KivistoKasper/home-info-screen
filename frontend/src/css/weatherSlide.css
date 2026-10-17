@@ -6,7 +6,7 @@
   padding: 16px;
   border-radius: 16px;
   overflow-x: auto;
-  background: linear-gradient(145deg, #c5c5c5, #393939);
+  background: linear-gradient(145deg, #dbe2e9d5, #27ccd8);
   box-shadow: 0 8px 30px rgba(226, 199, 199, 0.08);
   box-sizing: border-box;
   scroll-snap-type: x mandatory;
@@ -16,7 +16,7 @@
   flex: 0 0 150px;
   padding: 14px;
   border-radius: 16px;
-  background: #fcfbfb;
+  background: linear-gradient(215deg, #87878777, #ffffff);
   scroll-snap-align: center;
   box-sizing: border-box;
 }

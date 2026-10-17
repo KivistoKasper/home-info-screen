@@ -1,3 +1,4 @@
 *.tar
 *.ini
 start-dev.sh
+Projects.code-workspace

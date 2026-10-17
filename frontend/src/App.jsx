@@ -7,6 +7,7 @@ import WeatherNow from "./views/weatherNow";
 import WeatherSlide from './views/weatherSlide'; 
 import TimeDateView from './views/timeDate';
 import NysseView from './views/nysse';
+import KRuokaView from "./views/kruoka";
 
 function App() {
 
@@ -48,6 +49,11 @@ function App() {
       <div className="weather-slide-container">
         <WeatherSlide weather={weather} />
       </div>
+
+      <div className="kruoka-container">
+        <KRuokaView />
+      </div>
+
     </div>
   )
 }

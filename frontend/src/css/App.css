@@ -25,7 +25,8 @@
 }
 
 .weather-container,
-.nysse-container {
+.nysse-container,
+.kruoka-container {
   min-width: 0;
 }
 /* WeatherNow */
@@ -45,6 +46,13 @@
 
 /* WeatherSlide */
 .weather-slide-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-items: stretch;
+}
+
+.kruoka-container {
   width: 100%;
   box-sizing: border-box;
   display: grid;
